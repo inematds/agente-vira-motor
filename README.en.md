@@ -1,6 +1,6 @@
 # Error Alarm — audits and proposes the fix
 
-[![agente-vira-motor](guia/assets/banner-en.jpg)](https://inematds.github.io/agente-vira-motor/guia/en/)
+[![alerta-conserta-motor](guia/assets/banner-en.jpg)](https://inematds.github.io/alerta-conserta-motor/guia/en/)
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
@@ -10,7 +10,7 @@ Leaving an AI agent free to create all the time gets expensive and repeats mista
 
 ## 📖 User guide
 
-Complete guide (landing page + walkthrough): **https://inematds.github.io/agente-vira-motor/guia/en/**
+Complete guide (landing page + walkthrough): **https://inematds.github.io/alerta-conserta-motor/guia/en/**
 
 <!-- VIDEO-README: entra o link do explicavideo quando publicado -->
 
@@ -19,7 +19,7 @@ Complete guide (landing page + walkthrough): **https://inematds.github.io/agente
 Open Claude Code or Codex in your projects folder and paste:
 
 ```text
-Read the "agente-vira-motor" kit at https://github.com/inematds/agente-vira-motor (the README explains everything, including installation).
+Read the "alerta-conserta-motor" kit at https://github.com/inematds/alerta-conserta-motor (the README explains everything, including installation).
 Then look through my projects and answer me in plain English:
 1. Do I already record what goes wrong (failures, blockers, rejections, lessons)? If not, how do I start with one line per error?
 2. Run today's alert on my projects and show me the error that has come back the most.
@@ -53,7 +53,7 @@ The cost is the `total_cost_usd` reported by Claude Code. With a subscription, y
 **Prerequisites:** Python 3.9+ (no dependencies). For `medir.py`: Claude Code (`claude`) and/or Codex (`codex`), signed in through your subscription.
 
 ```bash
-git clone https://github.com/inematds/agente-vira-motor.git && cd agente-vira-motor
+git clone https://github.com/inematds/alerta-conserta-motor.git && cd alerta-conserta-motor
 python3 -m unittest discover -s tests -v        # 12 tests, no network or model
 
 python3 alerta.py --raiz ~/projetos             # today's report (today + yesterday)

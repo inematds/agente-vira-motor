@@ -1,6 +1,6 @@
 # Alarme dos Erros — audita e propõe o conserto
 
-[![agente-vira-motor](guia/assets/banner.jpg)](https://inematds.github.io/agente-vira-motor/guia/)
+[![alerta-conserta-motor](guia/assets/banner.jpg)](https://inematds.github.io/alerta-conserta-motor/guia/)
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
@@ -10,7 +10,7 @@ Deixar um agente de IA livre para criar o tempo todo sai caro e repete erros. Es
 
 ## 📖 Guia de uso
 
-Guia completo (landing + passo a passo): **https://inematds.github.io/agente-vira-motor/guia/**
+Guia completo (landing + passo a passo): **https://inematds.github.io/alerta-conserta-motor/guia/**
 
 <!-- VIDEO-README: entra o link do explicavideo quando publicado -->
 
@@ -19,7 +19,7 @@ Guia completo (landing + passo a passo): **https://inematds.github.io/agente-vir
 Abra o Claude Code ou o Codex na pasta dos seus projetos e cole:
 
 ```text
-Leia o kit "agente-vira-motor" em https://github.com/inematds/agente-vira-motor (o README explica tudo, inclusive a instalação).
+Leia o kit "alerta-conserta-motor" em https://github.com/inematds/alerta-conserta-motor (o README explica tudo, inclusive a instalação).
 Depois olhe os meus projetos e me responda em português simples:
 1. Eu já anoto o que dá errado (falhas, bloqueios, reprovações, lições)? Se não, como começo com uma linha por erro?
 2. Rode o alerta do dia nos meus projetos e me mostre o erro que mais voltou.
@@ -53,7 +53,7 @@ O custo é o `total_cost_usd` que o Claude Code informa. Na assinatura você nã
 **Pré-requisitos:** Python 3.9+ (sem dependências). Para `medir.py`: o Claude Code (`claude`) e/ou o Codex (`codex`) logados pela assinatura.
 
 ```bash
-git clone https://github.com/inematds/agente-vira-motor.git && cd agente-vira-motor
+git clone https://github.com/inematds/alerta-conserta-motor.git && cd alerta-conserta-motor
 python3 -m unittest discover -s tests -v        # 12 testes, sem rede e sem modelo
 
 python3 alerta.py --raiz ~/projetos             # relatório do dia (hoje + ontem)

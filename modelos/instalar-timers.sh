@@ -4,7 +4,7 @@ set -euo pipefail
 D=$(cd "$(dirname "$0")" && pwd); U="$HOME/.config/systemd/user"; mkdir -p "$U"
 KIT=$(cd "$D/.." && pwd)
 for f in avm-alerta.service avm-alerta.timer avm-semana.service avm-semana.timer; do
-  sed "s#%h/projetos/agente-vira-motor#$KIT#" "$D/$f" > "$U/$f"
+  sed "s#%h/projetos/alerta-conserta-motor#$KIT#" "$D/$f" > "$U/$f"
 done
 systemctl --user daemon-reload
 systemctl --user enable --now avm-alerta.timer avm-semana.timer

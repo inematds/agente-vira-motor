@@ -1,4 +1,4 @@
-# CLAUDE.md — agente-vira-motor
+# CLAUDE.md — alerta-conserta-motor
 
 Kit: transformar o trabalho repetitivo do agente em MOTOR (script fixo + modelo só onde julga), com alerta diário,
 aprendizado semanal e medição de modelo × esforço. Python 3 puro, sem rede, sem API.

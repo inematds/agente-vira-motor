@@ -1,6 +1,6 @@
 # Alarma de Errores — audita y propone el arreglo
 
-[![agente-vira-motor](guia/assets/banner-es.jpg)](https://inematds.github.io/agente-vira-motor/guia/es/)
+[![alerta-conserta-motor](guia/assets/banner-es.jpg)](https://inematds.github.io/alerta-conserta-motor/guia/es/)
 
 **🇧🇷 [Português](README.md) · 🇺🇸 [English](README.en.md) · 🇪🇸 [Español](README.es.md)**
 
@@ -10,7 +10,7 @@ Dejar a un agente de IA libre para crear todo el tiempo sale caro y hace que rep
 
 ## 📖 Guía de uso
 
-Guía completa (landing + paso a paso): **https://inematds.github.io/agente-vira-motor/guia/es/**
+Guía completa (landing + paso a paso): **https://inematds.github.io/alerta-conserta-motor/guia/es/**
 
 <!-- VIDEO-README: entra o link do explicavideo quando publicado -->
 
@@ -19,7 +19,7 @@ Guía completa (landing + paso a paso): **https://inematds.github.io/agente-vira
 Abre Claude Code o Codex en la carpeta de tus proyectos y pega esto:
 
 ```text
-Lee el kit "agente-vira-motor" en https://github.com/inematds/agente-vira-motor (el README explica todo, incluida la instalación).
+Lee el kit "alerta-conserta-motor" en https://github.com/inematds/alerta-conserta-motor (el README explica todo, incluida la instalación).
 Después, revisa mis proyectos y respóndeme en español sencillo:
 1. ¿Ya anoto lo que sale mal (fallos, bloqueos, rechazos, lecciones)? Si no, ¿cómo empiezo con una línea por error?
 2. Ejecuta la alerta del día en mis proyectos y muéstrame el error que más se repitió.
@@ -53,7 +53,7 @@ El costo es el `total_cost_usd` que informa Claude Code. Con la suscripción no 
 **Requisitos:** Python 3.9+ (sin dependencias). Para `medir.py`: Claude Code (`claude`) y/o Codex (`codex`) con sesión iniciada mediante la suscripción.
 
 ```bash
-git clone https://github.com/inematds/agente-vira-motor.git && cd agente-vira-motor
+git clone https://github.com/inematds/alerta-conserta-motor.git && cd alerta-conserta-motor
 python3 -m unittest discover -s tests -v        # 12 pruebas, sin red y sin modelo
 
 python3 alerta.py --raiz ~/projetos             # informe del día (hoy + ayer)

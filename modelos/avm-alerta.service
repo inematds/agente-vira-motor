@@ -1,10 +1,10 @@
 # Alerta do dia (zero token). Copie para ~/.config/systemd/user/ e ajuste RAIZ e ENVIO.
 [Unit]
-Description=agente-vira-motor: alerta do dia
+Description=alerta-conserta-motor: alerta do dia
 
 [Service]
 Type=oneshot
-Environment=KIT=%h/projetos/agente-vira-motor
+Environment=KIT=%h/projetos/alerta-conserta-motor
 Environment=RAIZ=%h/projetos
 # ENVIO recebe o texto curto pelo stdin. Ex.: um script seu que manda para o Telegram/WhatsApp/e-mail.
 Environment=ENVIO=cat
