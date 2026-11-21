@@ -1,0 +1,12 @@
+# Aprendizado da semana (zero token): grava semana/AAAA-MM-DD.md e .json e compara com a semana anterior.
+[Unit]
+Description=agente-vira-motor: aprendizado da semana
+
+[Service]
+Type=oneshot
+Environment=KIT=%h/projetos/agente-vira-motor
+Environment=RAIZ=%h/projetos
+Environment=ENVIO=cat
+ExecStart=/bin/sh -c 'python3 "$KIT/semana.py" --raiz "$RAIZ" --pasta "$KIT/semana" | head -25 | $ENVIO; exit 0'
+TimeoutStartSec=600
+MemoryMax=1G

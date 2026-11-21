@@ -1,0 +1,17 @@
+{
+ "agente_livre": {
+  "modelo": "sonnet",
+  "esforco": "medium",
+  "segundos": 35,
+  "turnos": 7,
+  "tokens_entrada": 181677,
+  "tokens_saida": 4366,
+  "custo_usd": 0.2350067,
+  "erro": false
+ },
+ "motor": {
+  "segundos": 1.16,
+  "tokens": 0,
+  "custo_usd": 0
+ }
+}

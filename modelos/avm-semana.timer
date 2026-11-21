@@ -1,0 +1,9 @@
+[Unit]
+Description=agente-vira-motor: aprendizado toda segunda às 07:45
+
+[Timer]
+OnCalendar=Mon 07:45
+Persistent=true
+
+[Install]
+WantedBy=timers.target

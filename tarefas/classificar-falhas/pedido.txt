@@ -1,0 +1,7 @@
+Você vai classificar falhas reais de um sistema de produção de conteúdo com agentes de IA.
+Para cada item, diga se a causa principal foi:
+- "prompt": o pedido, a instrução, a regra ou o modelo entendeu errado / fez errado (erro de raciocínio, de instrução, de conferência).
+- "infra": máquina, memória, rede, serviço, dependência, versão de ferramenta, permissão ou processo sem supervisão.
+Responda SOMENTE com um array JSON de strings na ordem dos itens, por exemplo ["prompt","infra",...]. Nada antes nem depois.
+
+Itens:

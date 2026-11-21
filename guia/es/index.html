@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El agente se vuelve motor — tu agente se equivoca menos y gasta menos cada semana</title>
+<meta name="description" content="Kit gratis para Claude Code y Codex: aviso diario del error que volvió, aprendizaje semanal y medición de modelo y esfuerzo. Lo que se repite se vuelve motor: menos errores, menos gasto.">
+<link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/agente-vira-motor/guia/">
+<link rel="alternate" hreflang="en" href="https://inematds.github.io/agente-vira-motor/guia/en/">
+<link rel="alternate" hreflang="es" href="https://inematds.github.io/agente-vira-motor/guia/es/">
+<meta property="og:title" content="El agente se vuelve motor — tu agente se equivoca menos y gasta menos cada semana">
+<meta property="og:description" content="Lo que se repite se vuelve motor: aviso del día, aprendizaje de la semana y el modelo adecuado medido. Kit gratis.">
+<meta property="og:image" content="https://inematds.github.io/agente-vira-motor/guia/assets/banner-es.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#FACC15; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    --fill:#FACC15; --tint:rgba(250,204,21,.12); --ok:#7CE0C6; --bad:#F0918A;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#a16207; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    --fill:#FACC15; --tint:#FEF9C3; --ok:#0E6B55; --bad:#A83426;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  body.light pre .k{color:#f0c070}
+  body.light nav{background:rgba(246,247,249,.85)}
+  body.light .amb{color:var(--txt);background:linear-gradient(transparent 55%,#FACC15 55%)}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  body.light main a:not(.btn),body.light footer a{color:#854d0e;text-decoration:underline;text-decoration-color:#FACC15;text-decoration-thickness:3px}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  p code,li code,td code{font-size:.9em;background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:.05em .35em}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb);white-space:nowrap}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut);padding:.2em .45em;border-radius:6px} .lang a.on{color:var(--amb);background:var(--tint)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--fill);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  nav .links a.sec{white-space:nowrap}
+  @media(max-width:1360px){nav .links a.opt{display:none}}
+  @media(max-width:860px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(250,204,21,.18),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.15rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:44ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;height:auto;display:block}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:66ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.95rem;margin:0}
+  .card p+p{margin-top:.6em}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0;margin:.4em 0 0}
+  pre .c{color:#7d7d8a} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:28px}
+  .step>div{min-width:0}
+  .step .b{width:46px;height:46px;border-radius:12px;background:var(--fill);color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .5em}
+  .quem{display:inline-block;font-family:Sora;font-size:.75rem;letter-spacing:.06em;color:var(--txt);background:var(--tint);border:1px solid var(--line);border-radius:999px;padding:.1em .7em;margin-left:.5em;vertical-align:middle;font-weight:600}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:4px}
+  /* números */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  @media(max-width:720px){.stats{grid-template-columns:1fr}}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .stat b{display:block;font:800 clamp(1.9rem,4vw,2.6rem)/1.05 Sora,sans-serif;letter-spacing:-.02em;color:var(--amb)}
+  body.light .stat b{color:var(--txt)}
+  .stat span{display:block;color:var(--mut);font-size:.93rem;margin-top:.5em}
+  .fonte{font-size:.86rem;color:var(--mut);margin-top:14px;max-width:80ch}
+  /* trocas */
+  .troca{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:26px 0;border-top:1px solid var(--line)}
+  .troca:first-of-type{border-top:none}
+  .troca .n{width:64px;height:64px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;font:800 1.6rem Sora,sans-serif;color:var(--amb)}
+  body.light .troca .n{color:var(--txt);background:var(--fill);border-color:var(--fill)}
+  .troca h3{font-size:1.3rem;margin-bottom:.35em}
+  .troca p{margin:.35em 0;max-width:72ch}
+  .troca .ex{margin-top:.8em;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--fill);border-radius:10px;padding:12px 16px;font-size:.95rem;color:var(--mut);max-width:76ch}
+  .troca .ex b{color:var(--txt)}
+  @media(max-width:540px){.troca{grid-template-columns:1fr}}
+  /* três finais */
+  .vs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;max-width:900px}
+  @media(max-width:720px){.vs{grid-template-columns:1fr}}
+  .vs div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.93rem}
+  .vs strong{display:block;font-family:Sora;margin-bottom:.25em}
+  .vs .r{display:block;margin-top:.5em;font-weight:600}
+  .vs .r.bad{color:var(--bad)} .vs .r.ok{color:var(--ok)}
+  .card ul{margin:8px 0 0;padding-left:20px}.card li{margin:5px 0}
+  /* prova */
+  .prova{background:var(--card);border:1px solid var(--amb);border-radius:16px;padding:26px 26px 22px;margin-top:6px}
+  body.light .prova{border-color:#EAB308}
+  .tl{list-style:none;margin:0;padding:0;counter-reset:t}
+  .tl li{position:relative;padding:0 0 18px 48px;counter-increment:t}
+  .tl li::before{content:counter(t);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:10px;background:var(--fill);color:#1a1206;font:800 .95rem/32px Sora,sans-serif;text-align:center}
+  .tl li::after{content:"";position:absolute;left:15px;top:36px;bottom:4px;width:2px;background:var(--line)}
+  .tl li:last-child::after{display:none}
+  .tl b{font-family:Sora}
+  blockquote{margin:6px 0 0;padding:14px 18px;border-left:3px solid var(--fill);background:var(--bg2);border-radius:0 10px 10px 0;font-size:1.02rem}
+  .prova .rod{font-size:.86rem;color:var(--mut);margin-top:14px}
+  /* parte técnica */
+  .techhead{background:var(--bg2);border-top:3px solid var(--fill);padding:58px 0 8px}
+  .techhead h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em;margin:.3em 0 0}
+  .techhead .sub{color:var(--mut);margin:.6em 0 1.2em;max-width:66ch}
+  .techzone{background:var(--bg2)}
+  .techzone .card{background:var(--card)}
+  .tbl{width:100%;border-collapse:collapse;font-size:.93rem}
+  .tbl th,.tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .tbl th{font-family:Sora;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  @media(max-width:600px){.tbl thead{display:none} .tbl tr{display:block;border-bottom:1px solid var(--line);padding:6px 0} .tbl tr:last-child{border-bottom:none} .tbl td{display:block;border:none;padding:4px 14px}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><span class="emoji">⚙️</span> El agente se vuelve motor</a>
+  <span class="sep">|</span>
+  <span class="clubpro">
+    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <span class="sep">-</span>
+    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+  </span>
+  <div class="links">
+    <a class="sec" href="#explicado">El beneficio</a>
+    <a class="sec" href="#dia">En tu día</a>
+    <a class="sec opt" href="#como">Cómo funciona</a>
+    <a class="sec" href="#comecar">Cómo empezar</a>
+    <a class="sec opt" href="#prova">La prueba</a>
+    <span class="lang"><a href="../">PT</a><a href="../en/">EN</a><a class="on" href="./">ES</a></span>
+    <button class="tgl" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">🌙</button>
+    <a class="btn" href="https://github.com/inematds/agente-vira-motor" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div>
+      <span class="chip">Método “El agente se vuelve motor” · medido en 231 proyectos reales · kit gratis</span>
+      <h1>Tu agente repite el mismo error y gasta tu cuota. <span class="amb">El agente se vuelve motor</span> hace que se equivoque menos y gaste menos cada semana.</h1>
+      <p class="lead">Cada mañana recibes un aviso breve: qué salió mal ayer y, sobre todo, qué ya había salido mal antes. Cada lunes ves si el mismo error disminuyó. Y el trabajo que se repite deja de ser una improvisación de la IA y se vuelve un motor: siempre igual, más barato y más preciso.</p>
+      <div class="cta">
+        <a class="btn" href="#explicado">Lo que ganas</a>
+        <a class="btn ghost" href="#comecar">Cómo empezar</a>
+      </div>
+    </div>
+    <figure><img src="../assets/banner-es.jpg" alt="El agente se vuelve motor: tu agente se equivoca menos y gasta menos cada semana"></figure>
+  </div>
+</header>
+
+<main>
+<section id="resumo" class="resumo"><div class="wrap">
+  <span class="chip">En una frase</span>
+  <p><strong>Dejar que un agente de IA trabaje libremente todo el tiempo sale caro y hace que repita errores.</strong> Este kit lee los cuadernos donde anotas lo que salió mal (fallos, bloqueos, rechazos y lecciones) y te envía un aviso cada día. Cada semana mide si el mismo error disminuyó y señala qué debería convertirse en <strong>motor</strong>: un paso fijo, realizado por un programa, en el que la IA solo interviene cuando necesita pensar. También prueba varios modelos y niveles de esfuerzo con la misma tarea para que uses el más barato que todavía acierta. Sirve para quienes usan Claude Code o Codex en el trabajo. Solo necesitas uno de los dos. La IA instala el kit por ti.</p>
+  <figure style="margin:22px 0 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-es.jpg" alt="El agente se vuelve motor: el mismo error vuelve, aviso del día, aprendizaje de la semana, motor en lugar de agente libre, modelo y esfuerzo medidos, cómo empezar" style="width:100%;display:block"></figure>
+</div></section>
+
+<section id="explicado"><div class="wrap">
+  <span class="chip">El beneficio</span>
+  <h2>¿Agente libre <span class="amb">o motor</span>?</h2>
+  <div class="grid g2">
+    <div class="card"><h3>😩 Agente libre todo el tiempo</h3><p>Le pides algo, la IA se pone a buscar, vuelve a leerlo todo, improvisa una forma y te lo entrega. Al día siguiente hace todo otra vez, de una forma un poco distinta. Cada vez gasta tu cuota y el error de ayer puede volver, porque nadie midió nada.</p></div>
+    <div class="card"><h3>😌 Motor para lo que se repite</h3><p>Lo que siempre es igual se convierte en un programa fijo, que no se equivoca por distracción y no gasta nada. La IA interviene solo en el paso que necesita pensar, con el modelo más barato que aprobó la medición. Cuando algo falla, se anota en el cuaderno, y el aviso de mañana te dice si volvió a pasar.</p></div>
+  </div>
+  <div class="grid g3" style="margin-top:16px">
+    <div class="card"><h3>🔔 Te enteras enseguida</h3><p>Un aviso breve al día, en el celular si quieres, que muestra primero el error que volvió. No tienes que leer 400 líneas.</p></div>
+    <div class="card"><h3>📉 Los errores repetidos disminuyen</h3><p>Cada semana recibes un resultado: cuántos de los errores ya habían ocurrido antes. El objetivo es que ese resultado baje. Un error nuevo enseña, pero repetirlo es un desperdicio.</p></div>
+    <div class="card"><h3>💰 Menos gasto, la misma calidad</h3><p>En nuestra prueba, el modelo más caro costó <strong>31 veces más</strong> y acertó lo mismo que el más barato. Medir antes de elegir es lo que reduce el gasto.</p></div>
+  </div>
+</div></section>
+
+<section id="dia"><div class="wrap">
+  <span class="chip">En tu día a día</span>
+  <h2>Cómo esto cambia tu <span class="amb">día</span></h2>
+  <p class="sub">No necesitas programar para notar la diferencia. Mira tres situaciones comunes de quienes ya trabajan con agentes.</p>
+  <div class="grid g3">
+    <div class="card"><h3>🖼️ “Guarda y revisa la imagen”</h3><p><strong>Hoy:</strong> cada vez la IA intenta usar una herramienta que no existe en la máquina, se topa con el problema, busca cómo resolverlo y lo anota. Aquí pasó <strong>355 veces</strong> en dos meses, y 103 veces en un solo día.</p><p><strong>Con el kit:</strong> el aviso muestra arriba el mismo bloqueo repetido. Se convierte en un motor para revisar imágenes, siempre igual, y desaparece de la lista.</p></div>
+    <div class="card"><h3>📋 “Dime qué salió mal”</h3><p><strong>Hoy:</strong> le pides a la IA que lo revise, lee una muestra y hace un informe bonito, que cambia cada día y gasta cuota cada vez.</p><p><strong>Con el kit:</strong> el motor lo cuenta todo en 1 segundo, sin gastar nada, y el resultado es el mismo si lo ejecutas dos veces.</p></div>
+    <div class="card"><h3>🧠 “¿Qué modelo uso para esto?”</h3><p><strong>Hoy:</strong> usas el modelo más potente para todo, por si acaso.</p><p><strong>Con el kit:</strong> ejecutas la misma tarea con varios modelos y niveles de esfuerzo, con una puntuación asignada por un evaluador que la IA no ve, y te quedas con el más barato que todavía acierta.</p></div>
+  </div>
+  <div class="prova" style="margin-top:22px">
+    <ol class="tl">
+      <li><b>08h00 · llega el aviso del día</b><br><span class="mut">“Volvió a pasar: revisar imágenes sin la herramienta, 25 veces ahora, 79 antes”. Ya sabes por dónde empezar.</span></li>
+      <li><b>08h10 · eliges solo uno</b><br><span class="mut">y le pides a la IA que convierta ese paso en un motor. Ella crea el programa y la prueba.</span></li>
+      <li><b>Lunes, 07h45 · el aprendizaje de la semana</b><br><span class="mut">El resultado de repetición bajó del 18% al 17%. El tema que se convirtió en motor salió de la lista. Eliges el siguiente.</span></li>
+    </ol>
+  </div>
+</div></section>
+
+<section id="video"><div class="wrap">
+  <span class="chip">Video</span>
+  <h2>Entiéndelo en pocos minutos</h2>
+  <!-- VIDEO: entra o explicavideo do projeto quando publicado -->
+</div></section>
+
+<section id="como"><div class="wrap">
+  <span class="chip">Cómo funciona</span>
+  <h2>Cuatro piezas, <span class="amb">sin jerga</span></h2>
+  <p class="sub">El kit no hace que la IA sea más inteligente. Organiza el trabajo alrededor de ella para que el mismo error no vuelva y el gasto baje.</p>
+  <div class="grid g2">
+    <div class="card"><h3>📒 1. El diario de trabajo</h3><p>Como el cuaderno de un piloto: cada problema se convierte en una línea con la fecha, qué se rompió, la corrección más pequeña y si la culpa fue del pedido o de la máquina. Hay cuatro cuadernos: fallos, bloqueos (lo que la IA no pudo hacer), rechazos del revisor y lecciones.</p></div>
+    <div class="card"><h3>🔔 2. El aviso del día</h3><p>Como la luz del tablero de un auto: no cuenta todo el viaje, solo lo que necesita atención. Compara lo que se registró hoy con todo lo que ya pasó y pone primero el error que volvió. No usa IA, así que cuesta cero.</p></div>
+    <div class="card"><h3>📆 3. El aprendizaje de la semana</h3><p>Como la revisión del mecánico: mira la semana entera, calcula el resultado de repetición y lo compara con el de la semana anterior. Para cada tema repetido, indica el siguiente paso: una lección escrita, una prueba, un bloqueo o un <strong>motor</strong> (a partir de 8 veces).</p></div>
+    <div class="card"><h3>⚖️ 4. La balanza de modelos</h3><p>Como una prueba de consumo de combustible de un auto: la misma tarea, con la misma respuesta correcta oculta, se ejecuta con varios modelos y niveles de esfuerzo. El resultado es una tabla con la puntuación, el tiempo y cuánto de tu cuota consumió cada uno.</p></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>🏭 ¿Y qué es un motor?</h3><p>Es la línea de montaje de una tarea que se repite. Todo lo que siempre es igual (buscar, dar formato, revisar, entregar) se convierte en un paso fijo de un programa. La IA interviene solo donde necesita evaluar, con una respuesta breve y un formato acordado, y un evaluador comprueba si la respuesta es correcta antes de continuar. Si falla, el motor se detiene y anota una línea. No vuelve a intentarlo hasta que salga bien.</p></div>
+  <div class="card" style="margin-top:16px"><h3>⚠️ Lo que el kit no promete</h3><ul>
+    <li>No corrige el error por sí solo: muestra cuál corregir primero y qué paso seguir.</li>
+    <li>No reemplaza a la IA creativa: para explorar algo nuevo, el agente libre sigue siendo la herramienta adecuada.</li>
+    <li>Solo ve lo que se anotó: sin diario de trabajo, no hay aviso.</li>
+  </ul></div>
+</div></section>
+
+<section id="comecar"><div class="wrap">
+  <span class="chip">Cómo empezar</span>
+  <h2>Pídele a tu IA que <span class="amb">analice el kit</span></h2>
+  <p class="sub">No tienes que instalar nada a mano. La propia IA lee el kit, revisa tus proyectos y te dice qué te conviene.</p>
+  <div class="grid g3">
+    <div class="card"><h3>1. Abre tu IA</h3><p>Claude Code o Codex, en la carpeta donde están tus proyectos.</p></div>
+    <div class="card"><h3>2. Pega el pedido de abajo</h3><p>Le pide a la IA que lea el kit, busque tus cuadernos de errores y te explique todo en español sencillo, sin cambiar nada.</p></div>
+    <div class="card"><h3>3. Di que sí a lo que te parezca bien</h3><p>Te muestra el primer aviso y el plan. Tú apruebas lo que quieras: el aviso diario, el resumen semanal o la medición de modelos.</p></div>
+  </div>
+  <div class="pedido" style="margin-top:20px;position:relative">
+<pre id="pedidoTxt" style="white-space:pre-wrap">Lee el kit "agente-vira-motor" en https://github.com/inematds/agente-vira-motor (el README lo explica todo, incluida la instalación).
+Después revisa mis proyectos y respóndeme en español sencillo:
+1. ¿Ya anoto lo que sale mal (fallos, bloqueos, rechazos, lecciones)? Si no, ¿cómo empiezo con una línea por error?
+2. Ejecuta el aviso del día en mis proyectos y muéstrame el error que más se repitió.
+3. ¿Qué tarea mía se repite tanto que debería convertirse en un motor (un programa fijo, con la IA solo donde necesita pensar)?
+4. Para esa tarea, ¿vale la pena medir modelos y niveles de esfuerzo antes de elegir? ¿Cuánto gastaría de mi suscripción?
+No cambies nada ni actives ningún horario todavía. Muéstrame el plan y espera a que te diga que sí.</pre>
+    <button class="btn" id="copiarPedido" style="margin-top:10px">Copiar el pedido</button>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>🛠️ ¿Es técnico y prefieres instalarlo a mano?</h3><p>La instalación paso a paso, con los comandos, los archivos y las pruebas, está en el README de GitHub.</p><p><a class="btn ghost" href="https://github.com/inematds/agente-vira-motor/blob/main/README.es.md#instalación-técnica" target="_blank" rel="noopener">Ver la instalación técnica</a></p></div>
+</div></section>
+
+<section id="prova"><div class="wrap">
+  <span class="chip">La prueba</span>
+  <h2>Lo medimos en nuestros 231 proyectos, <span class="amb">el 20/11/2026</span></h2>
+  <p class="sub">Nada de esto es una estimación: son los cuadernos de errores reales de INEMA y pruebas reales con la suscripción.</p>
+  <div class="grid g3">
+    <div class="card"><h3 style="font-size:2rem" class="amb">355×</h3><p>El mismo bloqueo (la IA busca una herramienta que no existe en la máquina para revisar imágenes), anotado desde el 17/09. Como solo quedó escrito, siguió volviendo. Es el primero de la fila para convertirse en motor.</p></div>
+    <div class="card"><h3 style="font-size:2rem" class="amb">17%</h3><p>de los registros de la semana ya habían ocurrido antes (la semana anterior fue el 18%). Ese es el resultado que sigue el resumen semanal.</p></div>
+    <div class="card"><h3 style="font-size:2rem" class="amb">31×</h3><p>más caro: el modelo más potente, con esfuerzo alto, frente al más ligero, con esfuerzo bajo, en la misma tarea repetitiva. Ambos acertaron 22 de 24.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="card"><h3>🤖 El aviso hecho por un agente libre</h3><ul>
+      <li>35 segundos y 7 rondas de búsqueda</li>
+      <li>182 mil fragmentos de texto leídos (tokens)</li>
+      <li>US$ 0,24 de la cuota, todos los días (cerca de US$ 7 al mes)</li>
+      <li>Revisó una muestra. Vio que faltaba la herramienta y lo llamó “ruido”, sin contar las 355 veces</li>
+      <li>Escribió un buen texto para leer, pero cambia cada día</li>
+    </ul></div>
+    <div class="card"><h3>⚙️ El mismo aviso hecho por el motor</h3><ul>
+      <li>1,2 segundos</li>
+      <li>cero tokens, cero cuota</li>
+      <li>Revisó todas las líneas de los cuatro cuadernos</li>
+      <li>Puso el bloqueo repetido primero e indicó cuántas veces volvió</li>
+      <li>El mismo resultado cada vez que se ejecuta</li>
+    </ul></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>⚖️ La balanza: 24 fallos reales, clasificados como “culpa del pedido” o “culpa de la máquina”</h3>
+    <p>La respuesta correcta quedó oculta en un evaluador que la IA no puede ver. Hicimos dos rondas por combinación, con la suscripción:</p>
+    <ul>
+      <li><strong>Modelo ligero (Haiku), esfuerzo bajo:</strong> 22 de 24 · 7 s · US$ 0,002</li>
+      <li><strong>Modelo medio (Sonnet), esfuerzo bajo:</strong> 22,5 de 24 · 4 s · US$ 0,027</li>
+      <li><strong>Modelo potente (Opus), esfuerzo alto:</strong> 22 de 24 · 8 s · US$ 0,060</li>
+      <li><strong>Codex (GPT-6 Luna), esfuerzo bajo, medio y alto:</strong> 21 de 24 en los tres casos. El nivel alto tardó el doble.</li>
+    </ul>
+    <p class="mut">Más esfuerzo no mejoró la puntuación en esta tarea. En una tarea difícil puede mejorar, y por eso se mide cada tarea por separado. Fable 5.2 no participó: en esta cuenta pedía crédito adicional.</p></div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <span class="chip">Preguntas frecuentes</span>
+  <h2>Antes de <span class="amb">empezar</span></h2>
+  <div class="grid g2">
+    <div class="card"><h3>¿Necesito saber programar?</h3><p>No. Pegas el pedido, lees el plan y dices que sí o que no. La IA instala el kit y crea los motores.</p></div>
+    <div class="card"><h3>¿Cuesta algo?</h3><p>El kit es gratis. El aviso y el resumen semanal no usan IA, así que no cuestan nada. Solo la balanza de modelos usa tu suscripción, y cada ronda pequeña cuesta unos centavos de tu cuota.</p></div>
+    <div class="card"><h3>Entonces, ¿ya no dejo al agente trabajar libremente?</h3><p>Sí lo dejas para lo nuevo: explorar, crear e investigar. El método cambia lo que se repite. Se repite, se mide y se convierte en motor.</p></div>
+    <div class="card"><h3>¿Y si todavía no anoto mis errores?</h3><p>El pedido le dice a la IA que empiece por eso: una línea por error, siempre con el mismo formato. En una semana ya tienes un aviso. En dos, ya puedes comparar.</p></div>
+  </div>
+  <p class="sub" style="margin-top:22px;text-align:center"><strong>¿Qué tarea repite tu IA todos los días y ya debería convertirse en motor?</strong> El kit está gratis en inema.club, directo en internet.</p>
+</div></section>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="pill">Claude Code</div><div class="pill">Codex</div><div class="pill">Python 3</div><div class="pill">MIT</div>
+    <p style="margin-top:18px">El agente se vuelve motor · gratis en inema.club, directo en internet ·
+      <a href="https://github.com/inematds/agente-vira-motor">inematds/agente-vira-motor</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var KEY='agente-vira-motor-theme';
+    var b=document.body, t=document.getElementById('themeToggle');
+    try{ if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; } }catch(e){}
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      try{ localStorage.setItem(KEY, light?'light':'dark'); }catch(e){}
+    });
+  })();
+  (function(){
+    var bt=document.getElementById('copiarPedido'), tx=document.getElementById('pedidoTxt');
+    if(!bt||!tx) return;
+    bt.addEventListener('click',function(){
+      try{ navigator.clipboard.writeText(tx.textContent).then(function(){ bt.textContent='Copiado ✓'; setTimeout(function(){bt.textContent='Copiar el pedido';},2000); }); }catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>

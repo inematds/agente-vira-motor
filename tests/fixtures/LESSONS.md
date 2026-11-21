@@ -1,0 +1,2 @@
+- Conferir imagem com file ou Pillow, nunca identify (20/11/2026)
+- Regra antiga sem data

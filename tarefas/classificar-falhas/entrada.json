@@ -1,0 +1,122 @@
+[
+ {
+  "n": 1,
+  "o_que_quebrou": "Espera da divulga do rtex-vigia usou o id da entrega (3675) no `yt-pub-x3 esperar`, que pede o id do item (3636); saiu na hora e mandou \"Falhou\" falso ao v3",
+  "correcao": "usar o \"item N\" do BOT-FIM e testar `esperar <item> --segundos 2` antes de deixar a espera ligada"
+ },
+ {
+  "n": 2,
+  "o_que_quebrou": "Catálogo PRO: `enrichment.json` foi reformatado ao adicionar um item, com diff de 218 mil linhas",
+  "correcao": "detectar o formato original antes de gravar; restaurado em d38a9c3"
+ },
+ {
+  "n": 3,
+  "o_que_quebrou": "Agendador avulso do lote-135 (setsid, fora do inventário) com `claude -p` fixo: 12.619 falhas 429 em 15–16/11, 4,79 GB de sessões, laço sem parar no 1º erro",
+  "correcao": "usar `producao.revisar` do r7ex (ia.yaml + trava de cota), erro encerra o ciclo e para o vídeo no 3º; sessões 429 apagadas"
+ },
+ {
+  "n": 4,
+  "o_que_quebrou": "Crítico de chamada julgou vídeo INEMA.EDUC pela persona fixa de escritório e reprovou identificação",
+  "correcao": "adequar somente persona à audiência pedida; crítico separado9/10 e5sim,manchete preservada"
+ },
+ {
+  "n": 5,
+  "o_que_quebrou": "image_gen inventou percentuais 78% e -62% na tela de uma capa editorial",
+  "correcao": "editar somente a tela para diagrama sem números e revisar antes do render"
+ },
+ {
+  "n": 6,
+  "o_que_quebrou": "Conferência contou a criação do tópico como mensagem publicada",
+  "correcao": "Ler os 12 IDs publicados em vez da contagem reply_to"
+ },
+ {
+  "n": 7,
+  "o_que_quebrou": "Registro local usou caminho relativo no workdir inemavox",
+  "correcao": "Usar caminhos absolutos do hub wifi"
+ },
+ {
+  "n": 8,
+  "o_que_quebrou": "medir.py do curso: a tarefa da trava não testava a trava (`../../etc/passwd` caía em /tmp/etc) e o timeout contava como ACERTOU",
+  "correcao": "segredo.txt ao lado da pasta + conferir também a saída da ferramenta; OSError = CAIU à parte"
+ },
+ {
+  "n": 9,
+  "o_que_quebrou": "refaz swarm-ficha: `--strict` reprovou cenas 4/7/8 (2,2–2,6 s sem troca DENTRO de peça cinética: ritmo.py só re-enquadra foto) e CTA da cena 9 ancorada em \"E você\" depois do url_at \"inema ponto club\"",
+  "correcao": "+1 palavra cinética por buraco e cta(\"está grátis\") no gerar_visual.py, 1 religada; proteção: gerar_visual checar palavras cinéticas a ≤ 2 s e cta ancorada antes do url_at"
+ },
+ {
+  "n": 10,
+  "o_que_quebrou": "bombando-5 item 1 (claude-code-completo): traduz-pagina-codex.py traduziu as CHAVES do JSON de exemplo num comentário <pre> do guia EN (\"title/chapters/file\"): quem seguisse travava (a ferramenta só lê titulo/capitulos/arquivo). Revisor independente pegou",
+  "correcao": "chaves restauradas + frase \"os nomes dos campos ficam em PT\"; comentário de <pre> com código/JSON não vai ao tradutor (ou conferir por script contra o PT)"
+ },
+ {
+  "n": 11,
+  "o_que_quebrou": "explicavideo escrita-e-engenharia publicado com \"quarenta e quatro testes\" (kit tem 47) e abordagem de inventário sem dor/desejo nem nome do método",
+  "correcao": "regras-comuns da sessão com número diferente do FATOS; proteção: `checar_chamada.py` antes do avatar + conferir números das regras contra o FATOS"
+ },
+ {
+  "n": 12,
+  "o_que_quebrou": "guia bicho-dancando: regex `<div class=\"card\"><h3>[^<]*</h3>)<p>.*?</p>` com re.S começou no 1º cartão da página e apagou as seções Como funciona e Pré-requisitos (PT, EN e ES)",
+  "correcao": "reconstruí o PT e retraduzi; proteção: em edição por regex, ancorar no texto único do alvo e conferir contagem de `<section` antes/depois"
+ },
+ {
+  "n": 13,
+  "o_que_quebrou": "portal: `git worktree add` falhou no smudge do LFS (`doc/1107 (1)(2) (1).mp4` não existe no servidor, 404) e deixou o branch criado sem worktree",
+  "correcao": "`GIT_LFS_SKIP_SMUDGE=1 git worktree add <pasta> <branch>`; proteção: usar sempre essa variável nas worktrees do portal"
+ },
+ {
+  "n": 14,
+  "o_que_quebrou": "Pika H3 Flex: 1º teste ref2va (int8 + LoRA Flex) parou em 0/6 passos, memória livre do host chegou a 0 e OOM global matou o ComfyUI-h3 (cgroup só em 41 GB)",
+  "correcao": "guarda.sh (MemAvailable < 10 GB → stop) + subir com EXTRA_ARGS=\"--disable-dynamic-vram --disable-pinned-memory --cache-none\" (pesos estavam em dobro RAM+GPU); rodou em 341 s"
+ },
+ {
+  "n": 15,
+  "o_que_quebrou": "Retomada da campanha #12: 242 reenfileirados (falha de cota) não passaram pelo filtro e eram endereços sem histórico — 1º lote com 10 bloqueados + 2 voltaram de 20",
+  "correcao": "aplicar o filtro de classificação também aos reenfileirados (220 movidos para o lote 2)"
+ },
+ {
+  "n": 16,
+  "o_que_quebrou": "rtex jarvis-local: fazer parou em f2/f5 — deixa \"sessenta\"/\"sete\" não casa com a fala transcrita em algarismo (\"65 GB\", \"7 GB\")",
+  "correcao": "deixa em palavra que não é número (\"arquivo\", \"kit\"); checar deixas numéricas no `checar`"
+ },
+ {
+  "n": 17,
+  "o_que_quebrou": "curso v7.2: explicação embaixo do diagrama (rolagem guiada) cortada na 3ª linha — legenda com altura fixa 112 px + overflow hidden",
+  "correcao": "v71.js mede o passo mais longo e fixa a legenda nessa altura (motor 7.14.23)"
+ },
+ {
+  "n": 18,
+  "o_que_quebrou": "portal empresa-de-ia (worktree): `git stash; git rebase; git stash pop` deu conflito com commit de outra sessão e o `git add` + push seguinte subiu courses.ts/courses.data.json/feeds-i18n.json com marcas `<<<<<<<` (a21f5fb); consertado em 537ab10 minutos depois",
+  "correcao": "depois de `stash pop`/rebase, conferir `git diff --check` e `git grep '^<<<<<<<'` antes do commit, e parar se o pop disser CONFLICT"
+ },
+ {
+  "n": 19,
+  "o_que_quebrou": "n8n (VPS6) não subiu após docker pull: docker-compose 1.29 dá KeyError 'ContainerConfig' com imagem nova; n8n parado ~3 min",
+  "correcao": "docker-compose rm -f n8n antes do up (ou migrar p/ docker compose v2)"
+ },
+ {
+  "n": 20,
+  "o_que_quebrou": "explicavideos csm-a1/a5/a6/a7: render v2 reprovado por texto sobreposto (rótulo de ligação entre nós próximos, título de faixa > 13 letras)",
+  "correcao": "sem rótulo em ligação curta/vertical; título de lanes ≤ 13 letras"
+ },
+ {
+  "n": 21,
+  "o_que_quebrou": "explicavideos v1 e r7ex: Whisper \"CUDA out of memory\" com 60 GB livres — um whisper_gpu_worker do inemavox (finviral) segurava a GPU e nem torch.zeros(1,\"cuda\") abria contexto",
+  "correcao": "esperar o worker sair (testar torch.zeros) e retomar; nada a reconstruir"
+ },
+ {
+  "n": 22,
+  "o_que_quebrou": "16:9 ia-de-elite reprovado no `build_block --strict` viral: 24 trechos de 2–4 s sem troca (cenas com 1 deixa por foto; deixas tiradas do Whisper em vez do roteiro)",
+  "correcao": "`pontos` extras nas fotos/capítulos com deixas do texto do roteiro; rodar `build_block --strict` logo após o gerar_visual, antes de esperar o avatar"
+ },
+ {
+  "n": 23,
+  "o_que_quebrou": "Gate da publicação comparou inemabuscas com origin/INEMAPRO",
+  "correcao": "usar remote inemabuscas e conferir destino antes do fetch/push"
+ },
+ {
+  "n": 24,
+  "o_que_quebrou": "REA ES r7e quatro-passos: estúdio HeyGen \"continuando\" do rascunho antigo de mesmo título → `page.waitForURL` timeout em todo reenvio",
+  "correcao": "título novo (`ESTUDIO_SUFIXO=-b` no orquestra.py) para partir do template"
+ }
+]

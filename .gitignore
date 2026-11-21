@@ -1,0 +1,9 @@
+__pycache__/
+alertas/
+semana/
+resultados-*.log
+resultados/*/livre.md
+resultados/*/livre.json
+resultados/*/livre.err
+resultados/*/motor.md
+resultados/grade-codex/
